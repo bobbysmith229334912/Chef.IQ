@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "967690588300",
+    "project_id": "chefiq-901f8",
+    "storage_bucket": "chefiq-901f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967690588300:android:d75ab6ae8e5a193ecbeba9",
+        "android_client_info": {
+          "package_name": "com.hardcoreamature.chefiq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgkZfu873zoCIp76PUGMItzXqXldY4JHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

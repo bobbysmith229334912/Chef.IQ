@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "recipeinputactivity",
+  "private_key_id": "17ecbf4139a5ac13b1e3a06a677d9b600dd61535",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDINREQoRcwMv16\n7ui+TsEopEaNkYze6trnjo3HRKLajXsxulR3SfslHEPmKSDbGfa1LZO3IpEY5pdn\ny1CqfZhrdqJIGVx9YUgFE96IRPzTcRJBR5l4Q1yIKCTZO/HBgBsyCqP1T4D7iPY5\naJaONIt52jCsarz10B+ag1AKY+sOqLgugFxtR7dUOeiQCP8RwSvhhwJM32RKUcSL\n6Jiu4VVnjkrLHPWhMZFN98ECpG/3ZK83gnah0JsOuKDvg6NqoRj7xLmUiuoXgQ/Q\nks+k5B84wmtQcnbVPs0E8wOnXu0qfhubAd9xMM7VyAidq+/YxNtFPxic1SId5Fd9\nq51kvSdDAgMBAAECggEAMkCvsd7ddSm3Wl4RaYNXFJ53Xx2DoIiOvcSYbcYaooUU\nwRymCvM06NG5cVItfxF7TWrNQxCYHwnyQwlTjBfOZFr4zOQgxQ/gBfZAyy+VznT5\nQg14xikSVtLMvQJA4nMHYH4vPWnhVEHCnBJWiAdEYyeTRBPerky5Qg1nz9PYsmrR\nZWixMT1legAYEC7z3aZtkhS5Oje3TkIqXHbaYbRT/z8BUGhdGHLJZE/PoHnoT+aZ\nMZleSFRZW5zSIsCCk1jHDL/O+ijacm1mSUuAWyvay1VB6hetM1GdFDyrLWF2+hUo\n8S3Is2eNJYYvbHms1ZINDq8j6K+QXiGB3k1UYUFZcQKBgQDq9COt1k4PFG7tPi9W\n+Id0RzWBhQAIJ6xyKAaiSlaWhmTjApTYgHfrHr92/NYGpdjxs/cUx1/hnMU3DIeu\nbIWlimDjY1CJbz7GcS4fwddCPfc2a65tGrM+ah5BtyycgCDwY/HjMG/P+X0ntvly\nQCPmFEj5Oker6iVvqM4uECiJNwKBgQDaJCM/aeXJ34f4K/yj0zi7vAWR2oBf/sRv\n0wKBcukWyDcfZYd/v8YZ+2joIZuaj4gsz/pP7iHj/joKD4Nz88C3bSzAGCTsWxJ/\nzH0ILU9wdfP92CKy8BEbSljEJbiMzie2PlWU9oSK/3lFRI1OtAEvcfJQ8CWNJU5L\n9l4X7GEoVQKBgQCGVtGPs9kuBiDmxYeL0s6gTZbqV4GNKCIRo5EnehnIN0+3/OHe\naJYoeYxAHJDDfFBu4teDqfvIpDqfHyr1MFe6L0T2vvJtoo3iKRSWU98goQ2YsDkr\naPjT1xk1ueZoFVrAGGVV4XwNDjnhW12FVecwxqhy2D/irB57malJ7TNAQQKBgDKu\nFqpS9hoSnspfndCJ8DJdmoWqWAz1abn5MinVAqZSWcwnkHVznpjGujbEKByeoCqZ\nHzSWxLTtiZpwxD+aL/ntmWn/sgRfnEqovZu6uywLm2YsYtNjxvWqLjlT8i50bvF+\nRe/X3i9U713ScWoJlATr2jpHsNG8CxbG5FF2j5QJAoGBAKg6AunnIYlh/aaZST6j\nwE6I3CbhNve4SQB9iUmsg7fXxniTSQMrkZyKGi6ve57e2W66WfjqIWhw+97nhv6l\n/Zp81LwN3kAohjqG1zHioAsHvCl39Ks73n78g7c4u1VbzjCiLWzLeihgq0M7vA+B\nWrODfGYgUsQlGR6ycTcG6B23\n-----END PRIVATE KEY-----\n",
+  "client_email": "naturallanguageapiaccount@recipeinputactivity.iam.gserviceaccount.com",
+  "client_id": "110375308895306086552",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/naturallanguageapiaccount%40recipeinputactivity.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

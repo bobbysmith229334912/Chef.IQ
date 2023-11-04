@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Chef.IQ</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="login_success">Successfully Logged In</string>
+    <string name="login_failed">Login failed: %1$s</string>
+    <string name="enter_email_password">Please enter email and password</string>
+    <string name="registration_success">Successfully Registered</string>
+    <string name="registration_failed">Registration failed: %1$s</string>
+    <string name="welcome_user">Welcome, User!</string>
+    <string name="logout">Logout</string>
+    <string name="welcome">Welcome, %1$s!</string>
+    <string name="add_ingredient">Add ingredient</string>
+    <string name="ingredient_name_hint">Enter ingredient name</string>
+    <string name="quantity_hint">Enter the quantity</string>
+    <string name="add" />
+    <string name="ingredient_name_description">Input field for ingredient name</string>
+    <string name="quantity_description" />
+    <string name="add_ingredient_description">Add ingredient</string>
+    <string name="check_substitutions">Check Substitutions</string>
+    <string name="enter_your_recipe_ingredients">Enter your recipe ingredients</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="register_text" />
+    <string name="password_hint" />
+    <string name="quantity">Quantity</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+
+</resources>
