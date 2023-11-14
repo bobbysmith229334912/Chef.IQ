@@ -1,8 +1,7 @@
-package com.hardcoreamature.chefiq
-
 data class Ingredient(
-    var id: String = "", // Default to an empty string if not provided.
-    val name: String,
-    var amount: Int
-    // Other properties if needed
+    var id: String = "",  // Default value
+    val name: String = "",  // Default value
+    var amount: Int = 0  // Default value
+    // other properties with default values
 )
+

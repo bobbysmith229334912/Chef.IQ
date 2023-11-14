@@ -1,36 +1,32 @@
 package com.hardcoreamature.chefiq
 
-import android.app.AlertDialog
+import Ingredient
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.hardcoreamature.chefiq.databinding.ActivityInventoryBinding
+import com.hardcoreamature.chefiq.databinding.ActivityRecipeInputBinding
+import com.hardcoreamature.chefiq.databinding.DialogAddIngredientBinding
+import java.util.UUID
 
-class RecipeInputActivity : AppCompatActivity() {
+class IngredientInputActivity : AppCompatActivity() {
 
     private val firestore = Firebase.firestore
     private val ingredientsCollection = firestore.collection("ingredients")
     private lateinit var ingredientList: MutableList<Ingredient>
     private lateinit var adapter: IngredientAdapter
-    private lateinit var binding: ActivityInventoryBinding
+    private lateinit var binding: ActivityRecipeInputBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityInventoryBinding.inflate(layoutInflater)
+        binding = ActivityRecipeInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupRecyclerView()
-
-        binding.addIngredientButton.setOnClickListener {
-            showAddIngredientDialog()
-        }
+        setupAddIngredientButton()
 
         fetchIngredients()
     }
@@ -38,20 +34,29 @@ class RecipeInputActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         ingredientList = mutableListOf()
         adapter = IngredientAdapter(ingredientList, { ingredient ->
-            // handle delete (this is just a placeholder, replace with your own logic)
-            ingredientList.remove(ingredient)
-            adapter.notifyDataSetChanged()
-        }, { ingredient, newAmount ->
-            // handle amount change (this is just a placeholder, replace with your own logic)
+            // Handle delete
             val index = ingredientList.indexOf(ingredient)
             if (index != -1) {
-                ingredientList[index] = ingredient.copy(amount = newAmount)
+                ingredientList.removeAt(index)
+                adapter.notifyItemRemoved(index)
+            }
+        }, { ingredient ->
+            // Handle amount change (Note: Any amount changes should be reflected in 'ingredient' before this call)
+            val index = ingredientList.indexOf(ingredient)
+            if (index != -1) {
+                ingredientList[index] = ingredient
                 adapter.notifyItemChanged(index)
             }
         })
 
         binding.ingredientsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.ingredientsRecyclerView.adapter = adapter
+    }
+
+    private fun setupAddIngredientButton() {
+        binding.addIngredientButton.setOnClickListener {
+            showAddIngredientDialog()
+        }
     }
 
     private fun fetchIngredients() {
@@ -80,27 +85,18 @@ class RecipeInputActivity : AppCompatActivity() {
     }
 
     private fun showAddIngredientDialog() {
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_ingredient, null)
-        val builder = AlertDialog.Builder(this)
-        builder.setView(dialogView)
-
-        val ingredientNameEditText = dialogView.findViewById<EditText>(R.id.ingredientNameEditText)
-        val ingredientQuantityEditText = dialogView.findViewById<EditText>(R.id.ingredientQuantityEditText)
-        val addButton = dialogView.findViewById<Button>(R.id.addIngredientDialogButton)
-
-        val dialog = builder.create()
-        addButton.setOnClickListener {
-            val ingredientName = ingredientNameEditText.text.toString().trim()
-            val quantityStr = ingredientQuantityEditText.text.toString().trim()
-            val quantity = quantityStr.toIntOrNull()
-            if (ingredientName.isNotEmpty() && quantity != null) {
-                val ingredient = Ingredient(name = ingredientName, amount = quantity)
-                addIngredientToFirestore(ingredient)
-                dialog.dismiss()
-            } else {
-                Toast.makeText(this, "Please enter a valid name and quantity", Toast.LENGTH_SHORT).show()
+        val dialogBinding = DialogAddIngredientBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Add Ingredient")
+            .setView(dialogBinding.root)
+            .setPositiveButton("Add") { _, _ ->
+                val name = dialogBinding.ingredientNameEditText.text.toString().trim()
+                val quantity = dialogBinding.ingredientQuantityEditText.text.toString().trim().toIntOrNull() ?: 0
+                val newIngredient = Ingredient(UUID.randomUUID().toString(), name, quantity)
+                addIngredientToFirestore(newIngredient)
             }
-        }
+            .setNegativeButton("Cancel", null)
+            .create()
 
         dialog.show()
     }

@@ -42,16 +42,15 @@ class AuthActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Set onClickListeners
+        // Set onClickListeners for buttons
         setupButtonClickListeners()
 
-        // Switch to Register
+        // Switch views between Login and Register
         switchToRegisterTextView.setOnClickListener {
             loginLayout.visibility = LinearLayout.GONE
             registerLayout.visibility = LinearLayout.VISIBLE
         }
 
-        // Switch to Login
         switchToLoginTextView.setOnClickListener {
             loginLayout.visibility = LinearLayout.VISIBLE
             registerLayout.visibility = LinearLayout.GONE
@@ -82,31 +81,12 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            // User is signed in, navigate to Dashboard
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-            finish() // This will prevent the user from coming back to AuthActivity using the back button
-        }
-    }
-
     private fun loginUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                // Login successful
-                Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this, InventoryActivity::class.java)
-                startActivity(intent)
-                finish()
-                // This will close the AuthActivity
-
+                navigateToDashboardActivity()
             } else {
-                // Login failed
-                Toast.makeText(this, getString(R.string.login_failed, task.exception?.message), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -114,18 +94,17 @@ class AuthActivity : AppCompatActivity() {
     private fun registerUser(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                // Registration successful
-                Toast.makeText(this, "Successfully Registered. Please log in.", Toast.LENGTH_SHORT).show()
-
-                // Intent to start the login activity, replace AuthActivity::class.java with your login activity class if it's named differently
-                val intent = Intent(this, AuthActivity::class.java)
-                startActivity(intent)
-                finish()  // This will close the current activity (Registration Activity)
-
+                Toast.makeText(this, "Successfully Registered.", Toast.LENGTH_SHORT).show()
+                navigateToDashboardActivity()
             } else {
-                // Registration failed
                 Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun navigateToDashboardActivity() {
+        val intent = Intent(this, DashboardActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
