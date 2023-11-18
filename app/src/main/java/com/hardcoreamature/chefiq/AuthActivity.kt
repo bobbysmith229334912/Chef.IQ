@@ -2,7 +2,11 @@ package com.hardcoreamature.chefiq
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -25,43 +29,29 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        // Initialize UI components for Login
-        emailLoginEditText = findViewById(R.id.emailLoginEditText)
-        passwordLoginEditText = findViewById(R.id.passwordLoginEditText)
-        loginButton = findViewById(R.id.loginButton)
-        switchToRegisterTextView = findViewById(R.id.switchToRegisterTextView)
-        loginLayout = findViewById(R.id.loginLayout)
-
-        // Initialize UI components for Registration
-        emailRegisterEditText = findViewById(R.id.emailRegisterEditText)
-        passwordRegisterEditText = findViewById(R.id.passwordRegisterEditText)
-        registerButton = findViewById(R.id.registerButton)
-        switchToLoginTextView = findViewById(R.id.switchToLoginTextView)
-        registerLayout = findViewById(R.id.registerLayout)
-
-        // Initialize Firebase Auth
+        initializeUI()
         auth = FirebaseAuth.getInstance()
 
-        // Set onClickListeners for buttons
         setupButtonClickListeners()
+    }
 
-        // Switch views between Login and Register
-        switchToRegisterTextView.setOnClickListener {
-            loginLayout.visibility = LinearLayout.GONE
-            registerLayout.visibility = LinearLayout.VISIBLE
-        }
-
-        switchToLoginTextView.setOnClickListener {
-            loginLayout.visibility = LinearLayout.VISIBLE
-            registerLayout.visibility = LinearLayout.GONE
-        }
+    private fun initializeUI() {
+        emailLoginEditText = findViewById(R.id.emailLoginEditText)
+        passwordLoginEditText = findViewById(R.id.passwordLoginEditText)
+        emailRegisterEditText = findViewById(R.id.emailRegisterEditText)
+        passwordRegisterEditText = findViewById(R.id.passwordRegisterEditText)
+        loginButton = findViewById(R.id.loginButton)
+        registerButton = findViewById(R.id.registerButton)
+        switchToRegisterTextView = findViewById(R.id.switchToRegisterTextView)
+        switchToLoginTextView = findViewById(R.id.switchToLoginTextView)
+        loginLayout = findViewById(R.id.loginLayout)
+        registerLayout = findViewById(R.id.registerLayout)
     }
 
     private fun setupButtonClickListeners() {
         loginButton.setOnClickListener {
             val email = emailLoginEditText.text.toString().trim()
             val password = passwordLoginEditText.text.toString().trim()
-
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 loginUser(email, password)
             } else {
@@ -72,12 +62,21 @@ class AuthActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             val email = emailRegisterEditText.text.toString().trim()
             val password = passwordRegisterEditText.text.toString().trim()
-
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 registerUser(email, password)
             } else {
                 Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        switchToRegisterTextView.setOnClickListener {
+            loginLayout.visibility = LinearLayout.GONE
+            registerLayout.visibility = LinearLayout.VISIBLE
+        }
+
+        switchToLoginTextView.setOnClickListener {
+            loginLayout.visibility = LinearLayout.VISIBLE
+            registerLayout.visibility = LinearLayout.GONE
         }
     }
 

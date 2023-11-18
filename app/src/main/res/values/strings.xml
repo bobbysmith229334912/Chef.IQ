@@ -32,5 +32,19 @@
     <string name="ingredient_name">Ingredient name</string>
     <string name="view_ingredients">View Ingredients</string>
     <string name="back">Back</string>
+    <string name="ingredient_namee">Ingredient_Namee</string>
+    <string name="close" />
+    <string name="Open" />
+    <string name="open" />
+    <string name="recipe_input" />
+    <string name="ingredients" />
+    <string name="capture_select_image">Capture/Select Image</string>
+    <string name="capture_from_camera">Capture from Camera</string>
+    <string name="select_from_gallery">Select from Gallery</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="hello">Hello</string>
+    <string name="capture">Capture</string>
+    <string name="welcome_message" />
+    <string name="take_picture">Take Picture</string>
 
 </resources>

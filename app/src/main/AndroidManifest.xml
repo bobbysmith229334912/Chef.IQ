@@ -3,6 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Internet permission to access Google Cloud's Natural Language API -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.camera.flash"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- Camera feature -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!-- Autofocus feature -->
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <!-- Application components -->
+
 
     <application
         android:allowBackup="true"
@@ -24,7 +41,7 @@
             android:name=".InventoryActivity"
             android:exported="false" />
         <activity
-            android:name=".DashboardActivity"
+            android:name="DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".AuthActivity"

@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_ingredients"
+        android:title="@string/ingredients" />
+    <item
+        android:id="@+id/nav_recipe_input"
+        android:title="@string/recipe_input" />
+    <!-- Other menu items -->
+</menu>
